@@ -89,7 +89,7 @@ app.post('/adicionar', (req, res) => {
   });
 });
 
-app.post('/editar/:id', (req, res) => {
+app.put('/editar/:id', (req, res) => {
   const { cod_processo, data_inicio, descricao, localizacao, classificacao, etapa, prazo } = req.body;
   const id = req.params.id;
   const query = 'UPDATE ponto SET cod_processo = ?, data_inicio = ?, descricao = ?, localizacao = ?, classificacao = ?, etapa = ?, prazo = ? WHERE id_ponto = ?';
@@ -104,11 +104,11 @@ app.post('/editar/:id', (req, res) => {
 });
 
 // Dados dos pontos
-app.get('/dadosponto/:cod', (req, res) => { 
-  const cod = req.params.cod;
-  const query = 'SELECT id_ponto, cod_processo, data_inicio, descricao, localizacao, classificacao, etapa, prazo FROM ponto WHERE cod_processo = ?';
+app.get('/dadosponto/:id', (req, res) => { 
+  const id = req.params.id;
+  const query = 'SELECT cod_processo, data_inicio, descricao, localizacao, classificacao, etapa, prazo FROM ponto WHERE id_ponto = ?';
 
-  connection.query(query, cod, (error, results) => {
+  connection.query(query, id, (error, results) => {
     if(error){
       console.error('Erro ao executar a query:', error);
       return res.status(500).send('Erro no servidor');
@@ -144,7 +144,7 @@ app.get('/todospontos', (req, res) => {
 // Dados dos cards
 app.get('/meuscards/:cpf', (req, res) => { 
   const cpf = req.params.cpf;
-  const query = "SELECT a.nome, b.id_ponto, b.cod_processo, b.etapa, b.latitude, b.longitude FROM agente AS a JOIN ponto AS b WHERE b.n_agente = ? AND b.etapa <> 'Concluída'";
+  const query = "SELECT a.nome, b.id_ponto, b.cod_processo, b.etapa, b.latitude, b.longitude FROM agente AS a JOIN ponto AS b ON b.n_agente = a.cpf WHERE b.n_agente = ? AND b.etapa <> 'Concluída'";
 
   connection.query(query, cpf, (error, results) => {
     if(error){
@@ -156,7 +156,7 @@ app.get('/meuscards/:cpf', (req, res) => {
 });
 
 app.get('/historico', (req, res) => { 
-  const query = "SELECT a.nome, b.id_ponto, b.cod_processo, b.etapa FROM agente AS a JOIN ponto AS b WHERE b.etapa = 'Concluída'";
+  const query = "SELECT a.nome, b.id_ponto, b.cod_processo, b.etapa FROM agente AS a JOIN ponto AS b ON b.n_agente = a.cpf WHERE b.etapa = 'Concluída'";
 
   connection.query(query, (error, results) => {
     if(error){

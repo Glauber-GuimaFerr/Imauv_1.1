@@ -2,23 +2,23 @@
 import Msg from '/utils/msg.js'
 
 // Variáveis importantes
-const f_nome = document.querySelector('#f_nome').value == '' ? null : document.querySelector('#f_nome').value
-const f_cpf = document.querySelector('#f_cpf').value == '' ? null : document.querySelector('#f_cpf').value
-const f_endereco = document.querySelector('#f_endereco').value 
-const f_email = document.querySelector('#f_email').value == '' ? null : document.querySelector('#f_email').value
-const f_senha = document.querySelector('#f_senha').value == '' ? null : document.querySelector('#f_senha').value
-const btn = document.querySelector('#btn_sign')
+const fNome = document.querySelector('#fNome')
+const fCpf = document.querySelector('#fCpf')
+const fEndereco = document.querySelector('#fEndereco') 
+const fEmail = document.querySelector('#fEmail')
+const fSenha = document.querySelector('#fSenha')
+const btn = document.querySelector('#btnSign')
 
 const sv = 'http://localhost:3000'
 
 // Botão de cadastro
 btn.addEventListener('click', () => {
     const dados = {
-        nome: f_nome,
-        cpf: f_cpf,
-        endereco: f_endereco,
-        email: f_email,
-        senha: f_senha
+        nome: fNome.value == '' ? null : fNome.value,
+        cpf: fCpf.value == '' ? null : fCpf.value,
+        endereco: fEndereco.value,
+        email: fEmail.value == '' ? null : fEmail.value,
+        senha: fSenha.value == '' ? null : fSenha.value
     }
 
     const header = {
@@ -32,7 +32,7 @@ btn.addEventListener('click', () => {
     fetch(`${sv}/cadastro`, header)
     .then(res => {
         if(res.status != 500){
-            window.location.href = '/login.html'
+            window.location.href = '/components/pages/home/login.html'
         }else{
             const config = {
                 titulo: "Erro",

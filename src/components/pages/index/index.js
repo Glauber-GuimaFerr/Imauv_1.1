@@ -266,7 +266,61 @@ function success(pos){
                                 tipo: "e",
                                 titulo: "Editar processos"
                         }
+
                         OffCanvas.abrirEsquerda(config)
+
+                        fetch(`${sv}/meuscards/${sessionStorage.getItem('cpf_user')}`)
+                        .then(res => res.json())
+                        .then(data => {
+                                let cards = []
+                                data.forEach(card => {
+                                        const config = {
+                                                agente: card.nome,
+                                                id: card.id_ponto,
+                                                processo: card.cod_processo,
+                                                etapa: card.etapa,
+                                                latitude: card.latitude,
+                                                longitude: card.longitude
+                                        }
+                                        cards.push(Card.criar(config))
+                                })
+                                if(document.getElementById("conteudoEsquerda")){
+                                        cards.forEach(c => {
+                                                if(c.innerHTML.includes("Pendente")){
+                                                        c.style.backgroundColor = "yellow"
+                                                }else if(c.innerHTML.includes("Processamento")){
+                                                        c.style.backgroundColor = "green"
+                                                }
+
+                                                const inputs = c.getElementsByTagName("input")
+                                                const latCard = inputs[0].value
+                                                const longCard = inputs[1].value 
+
+                                                c.addEventListener("click", () => {
+                                                        if(navigator.geolocation){
+                                                                map.setView([latCard, longCard], zoom)
+                                                                const ocultID = c.querySelector("#ocultID")
+                                                                OffCanvas.abrirEsquerdaEdit(ocultID.innerHTML)
+                                                        }else{
+                                                                alert('Geolocalização não é suportada pelo seu navegador.')
+                                                        }
+                                                })
+                                                document.getElementById("conteudoEsquerda").appendChild(c)
+                                        })
+                                }
+                        })
+                        .catch(err => {
+                                        console.log(err)
+                                        const config = {
+                                                titulo: "Erro",
+                                                texto: "Dados não encontrados no sistema!",
+                                                cor: "#9c0606",
+                                                tipo: "ok",
+                                                ok: () => {},
+                                                confirmar: () => {}
+                                        }
+                                        Msg.mostrar(config)
+                        })
                 })
 
                 // Botão para adicionar processos

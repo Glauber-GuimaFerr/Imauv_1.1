@@ -2,15 +2,15 @@
 import Msg from '/utils/msg.js'
 
 // Variáveis importantes
-const f_email = document.querySelector('#f_email')
-const f_senha = document.querySelector('#f_senha')
-const btn = document.querySelector('#btn_login')
+const fEmail = document.querySelector('#fEmail')
+const fSenha = document.querySelector('#fSenha')
+const btn = document.querySelector('#btnLogin')
 
 const sv = 'http://localhost:3000'
 
 // Botão de login
-btn.addEventListener('click', async () => {
-    await fetch(`${sv}/login/${f_email.value}/${f_senha.value}`)
+btn.addEventListener('click', () => {
+    fetch(`${sv}/login/${fEmail.value}/${fSenha.value}`)
     .then(res => res.json())
     .then(data => {
         if(data.status != 500){
@@ -18,7 +18,7 @@ btn.addEventListener('click', async () => {
             sessionStorage.setItem('email_user', data[0].email)
             sessionStorage.setItem('cpf_user', data[0].cpf)
             sessionStorage.setItem('endereco_user', data[0].endereco)
-            window.location.href = '/index'
+            window.location.href = '/components/pages/index/index.html'
         }else{
             const config = {
                 titulo: "Erro",

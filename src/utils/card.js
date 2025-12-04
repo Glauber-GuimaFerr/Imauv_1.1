@@ -1,5 +1,6 @@
 export default class Card {
     static cardDiv = null
+    static cardOcultID = null
     static cardAgente = null
     static cardID = null
     static cardProcesso = null
@@ -10,6 +11,12 @@ export default class Card {
     static criar = (config) => {
         this.cardDiv = document.createElement("div")
         this.cardDiv.setAttribute("class", "cardDiv")
+
+        this.cardOcultID = document.createElement("p")
+        this.cardOcultID.setAttribute("id", "ocultID")
+        this.cardOcultID.innerHTML = `${config.id}`
+        this.cardOcultID.style.display = "none"
+        this.cardDiv.appendChild(this.cardOcultID)
 
         this.cardAgente = document.createElement("p")
         this.cardAgente.innerHTML = `<strong>Agente:</strong> ${config.agente}`

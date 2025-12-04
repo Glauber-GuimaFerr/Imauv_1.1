@@ -128,11 +128,15 @@ export default class OffCanvas {
             this.conteudoEsquerda.innerHTML = ""
         }else if(config.tipo == "a"){
             this.conteudoEsquerda.innerHTML = ""
-            this.conteudoEsquerda.appendChild(Form.criar("a"))
+            this.conteudoEsquerda.appendChild(Form.criar())
         }else if(config.tipo == "e"){
             this.conteudoEsquerda.innerHTML = ""
-            this.conteudoEsquerda.appendChild(Form.criar("e"))
         }
+    }
+
+    static abrirEsquerdaEdit = (ocultID) => {
+        this.conteudoEsquerda.innerHTML = ""
+        this.conteudoEsquerda.appendChild(Form.editar(ocultID))
     }
 
     // Painel da direita
