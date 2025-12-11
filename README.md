@@ -1,5 +1,5 @@
 # Imauv-1.1
-> [!IMPORTANT]
+> [!NOTE]
 > Protótipo desenvolvido para meu [Trabalho de Conclusão de Curso](https://drive.google.com/file/d/1BHLUOUSvqH_3lEKW6o44cipJ5zHOG9wh/view?usp=drive_link), que consiste num sistema georreferenciado para mapeamento de áreas urbanas vulneráveis, utilizando a API [Leaflet](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjv8LPfwbaRAxVbA7kGHbduAMsQFnoECBcQAQ&url=https%3A%2F%2Fleafletjs.com%2F&usg=AOvVaw1keCKYj9IpMCmxLWhUpXWv&opi=89978449).
 
 > [!IMPORTANT]
