@@ -17,6 +17,9 @@ Nessa atualização chegaram mudanças importantes que deram a verdadeira face d
 * Caixas pop-up de mensagem personalizadas.
 * Mudanças de estado de pontos e cards de acordo com o prazo.
 
+> [!WARNING]
+> **OBS:** Bugs de responsividade ainda não foram tratados nessa versão, então alguns navegadores podem apresentar problemas.
+
 Como pode ser visto nos arquivos, o sistema se adaptou, saindo do modelo MVC para uma estrutura mais próxima de um projeto React, formato bastante utilizado no desenvolvimento web atualmente e que facilita a escalabilidade para futuras versões que serão lançadas com novas tecnologias. Espero que meu projeto possa servir de inspiração para desenvolvedores que queiram buscar soluções semelhantes. 
 
 ## Execução do programa ##
