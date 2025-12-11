@@ -22,7 +22,7 @@ btn.addEventListener('click', () => {
         }else{
             const config = {
                 titulo: "Erro",
-                texto: "Servidor apresentou problemas de conexão ou funcionamento, tente novamente mais tarde.",
+                texto: "Credenciais inválidas, tente novamente.",
                 cor: "#9c0606",
                 tipo: "ok",
                 ok: () => {},

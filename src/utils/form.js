@@ -208,7 +208,7 @@ export default class Form {
                     }else{
                         const config = {
                             titulo: "Erro",
-                            texto: "Dados não podem ser cadastrados!",
+                            texto: "Dados não podem ser cadastrados! Verifique os campos.",
                             cor: "#9c0606",
                             tipo: "ok",
                             ok: () => {},
@@ -437,7 +437,7 @@ export default class Form {
                     }else{
                         const config = {
                             titulo: "Erro",
-                            texto: "Dados não podem ser atualizados!",
+                            texto: "Dados não podem ser atualizados! Verifique os campos.",
                             cor: "#9c0606",
                             tipo: "ok",
                             ok: () => {},

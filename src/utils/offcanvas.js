@@ -2,7 +2,7 @@
 import Form from "/utils/form.js"
 
 export default class OffCanvas {
-    static config = null /* Parâmetros */
+    static config = null /* Parâmetros do util */
     static btnLeaflet = null
     static offCanvasEsquerda = null
     static offCanvasDireita = null

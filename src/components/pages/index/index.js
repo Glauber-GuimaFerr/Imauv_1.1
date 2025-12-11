@@ -19,7 +19,7 @@ longi.setAttribute("name", "longitude")
 document.body.appendChild(longi)
 const zoom = 16 /* Escala */
 
-// Variáveis importantes
+// Outras variáveis importantes
 const elementosBody = document.querySelector('#elementosBody')
 const btnCurrPos = document.querySelector('#btnCurrPos')
 const btnUser = document.querySelector('#btnUser')
@@ -30,7 +30,7 @@ const btnHistory = document.querySelector('#btnHistory')
 
 const sv = 'http://localhost:3000'
 
-// Função success
+// Função success da API
 function success(pos){
         if(map === undefined){
                 map = L.map('mapID').setView([pos.coords.latitude, pos.coords.longitude], zoom) /* Renderização do mapa na posição atual */
@@ -80,7 +80,7 @@ function success(pos){
 
                 let currentPos = L.marker([pos.coords.latitude, pos.coords.longitude], {icon: currentIcon}).bindPopup('Sua localização!').addTo(map) /* Posição atual */
 
-                // Função de marcar ponto
+                // Função de marcar ponto no mapa
                 let pontoAzul
                 btnAddProcess.style.display = 'none'
 

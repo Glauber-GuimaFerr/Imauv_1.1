@@ -1,5 +1,5 @@
 export default class Card {
-    static cardDiv = null
+    static cardDiv = null /* Parâmetros do util */
     static cardOcultID = null
     static cardAgente = null
     static cardID = null
